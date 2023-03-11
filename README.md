@@ -1,4 +1,4 @@
-# Bootstrap 5 Tree View with Version field
+# Bootstrap 5 Tree View with extra fields
 
 This is a fork of https://github.com/nhmvienna/bs5treeview.
 
@@ -8,7 +8,7 @@ A very simple plugin to build a basic and elegant Treeview with boostrap 5.
 
 This version adds two features:
 
-- New optional text element called version at the end of the node.
+- New optional array element called extra that can provide extra text elements at the end of the node.
 - Nodes element can also be provided as an empty list.
 
 ## Dependencies
@@ -60,7 +60,14 @@ var tree = [
   {
     text: "Node 1",
     icon: "fa fa-folder",
-    version: "v1",
+    extra: [
+      {
+        text: "Extra info"
+      },
+      {
+        text: "Other extra info"
+      }
+    ],
     expanded: true,
     nodes: [
       {
@@ -72,9 +79,16 @@ var tree = [
             id:    "sub-node-1",
             text:  "Sub Child Node 1",
             icon:  "fa fa-folder",
-            version: "v1.1",
             class: "nav-level-3",
             href:  "https://google.com",
+            extra: [
+              {
+                text: "Extra info"
+              },
+              {
+                text: "Other extra info"
+              }
+            ],
             nodes: []
           },
           {
@@ -148,10 +162,17 @@ ID attribute value to assign to a given node.
 
 Set to true to expand this node's children initially
 
-#### version
-`String` `Optional`
+#### extra
+`Array` `Optional`
 
-A custom property to add a text with a version.
+An array with extra properties.
+
+### Extra Properties
+
+#### text
+`String` `Mandatory`
+
+The text value to show.
 
 ## Options
 

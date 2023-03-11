@@ -1,13 +1,13 @@
 /*! @preserve
  * bstreeview.js
- * Version: 1.2.2
+ * Version: 1.3.0
  * Authors: Sami CHNITER <sami.chniter@gmail.com>, Alberto Levy Espinosa <alberto.levy.espinosa@gmail.com>
  * Copyright 2023
  * License: Apache License 2.0
  *
  * Project: https://github.com/chniter/bstreeview
  * Project: https://github.com/nhmvienna/bs5treeview (bootstrap 5)
- * Project: https://github.com/albertolevyespinosa/bs5treeview-extended (bootstrap 5 with version field)
+ * Project: https://github.com/albertolevyespinosa/bs5treeview-extended (bootstrap 5 with extra fields)
  */
 ; (function ($, window, document, undefined) {
     "use strict";
@@ -33,7 +33,8 @@
         treeviewGroupItem: '<div role="group" class="list-group collapse" id="itemid"></div>',
         treeviewItemStateIcon: '<i class="state-icon"></i>',
         treeviewItemIcon: '<i class="item-icon"></i>',
-        treeviewItemData: '<div class="item-data"></div>'
+        treeviewItemData: '<div class="item-data"></div>',
+        treeviewItemExtraData: '<div class="item-extra-data"></div>'
     };
     /**
      * BsTreeview Plugin constructor.
@@ -145,17 +146,19 @@
                     treeItem.append(treeItemIcon);
                 }
                 // Set node Text.
-                var treeItemTextData = $(templates.treeviewItemData)
-                .attr('style', 'flex-grow: 2');
+                var treeItemTextData = $(templates.treeviewItemData);
+                //.attr('style', 'flex-grow: 2');
                 treeItemTextData.append(node.text);
                 treeItem.append(treeItemTextData);
 
-                // Set node Version if exists
-                if(node.version) {
-                    var treeItemVersionData = $(templates.treeviewItemData)
-                    .attr('style', 'display: flex; justify-content: flex-end;');
-                    treeItemVersionData.append(node.version);
-                    treeItem.append(treeItemVersionData);
+                // Set extra nodes if exists
+                if(node.extra) {
+                    $.each(node.extra, function(i, field) {
+                        var treeItemExtraData = $(templates.treeviewItemExtraData);
+                        //.attr('style', 'display: flex; justify-content: flex-end;');
+                        treeItemExtraData.append(field.text);
+                        treeItem.append(treeItemExtraData);
+                    });
                 }
 
                 // Reset node href if present
