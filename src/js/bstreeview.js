@@ -7,7 +7,7 @@
  *
  * Project: https://github.com/chniter/bstreeview
  * Project: https://github.com/nhmvienna/bs5treeview (bootstrap 5)
- * Project: https://github.com/albertolevyespinosa/bs5treeview-extended (bootstrap 5 with version field)
+ * Project: https://github.com/albertolevyespinosa/bs5treeview-extended (bootstrap 5 with extra fields)
  */
 ; (function ($, window, document, undefined) {
     "use strict";
